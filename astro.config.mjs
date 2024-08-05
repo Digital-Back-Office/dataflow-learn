@@ -7,15 +7,18 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [starlight({
     title: 'Dataflow',
-    favicon: '/public/favicon.svg',
+    favicon: '/favicon.svg',
     logo: {
       src: './src/assets/greenlogo.png',
       replacesTitle: true
     },
     customCss: ['./src/styles/custom.css'],
     social: {
-      github: 'https://github.com/withastro/starlight',
+     
 	  
+    },
+    editLink: {
+      baseUrl: 'https://github.com/withastro/starlight/edit/main/docs/',
     },
     sidebar: [{
       label: 'Guides',
