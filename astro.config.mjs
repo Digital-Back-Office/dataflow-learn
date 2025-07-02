@@ -141,6 +141,10 @@ export default defineConfig({
               label:'Connections and Secrets',
               link:"/reference/connection-and-secrets"
             },
+           {
+              label:'Streamlit chatBot',
+              link:"/reference/streamlit-chatbot"
+            }
           ],
           autogenerate: {
             directory: "reference",
