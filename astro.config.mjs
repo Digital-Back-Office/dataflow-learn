@@ -15,9 +15,6 @@ export default defineConfig({
       },
       customCss: ["./src/styles/custom.css"],
       social: {},
-      editLink: {
-        baseUrl: "https://github.com/withastro/starlight/edit/main/docs/",
-      },
       sidebar: [
         {
           label: "Get Started",

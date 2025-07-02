@@ -3,11 +3,11 @@ title: Welcome to Dataflow
 description: Get started with Dataflow.
 template: splash
 hero:
-  tagline: Congrats on setting up Dataflow !
+  tagline: Welcome to Dataflow 🚀
   image:
     file: ../../assets/houston.webp
   actions:
-    - text: Docs Guide
+    - text: Get Started Guide
       link: /get-started/introduction-to-dataflow/
       icon: right-arrow
       variant: primary
@@ -15,19 +15,31 @@ hero:
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
+## Next Steps
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+  <Card title="Explore Dataflow" icon="rocket">
+    Learn what Dataflow offers, including Studio, Runtime, Workflows, and Administration. Start with our [Introduction to Dataflow](/get-started/introduction-to-dataflow/).
+  </Card>
+
+  <Card title="Launch Studio Server" icon="play-circle">
+    Begin developing by [launching your Studio server](/workspace/studio/launch-studio-server/) to use notebooks, VS Code, MLFlow, and apps seamlessly.
+  </Card>
+
+  <Card title="Manage Environments" icon="layers">
+    [Create, build, and publish Python environments](/workspace/studio/environments/) for your team to ensure reproducibility and scalability.
+  </Card>
+
+  <Card title="Use Workflows" icon="flow">
+    Automate tasks with [Airflow workflows](/workspace/studio/workflows/) for scheduling data pipelines and periodic jobs efficiently.
+  </Card>
+
+  <Card title="Manage variables & Secrets" icon="key">
+    Securely [configure  variables, and secrets](/workspace/studio/variables-and-secrets/) for database access and credential management.
+  </Card>
+
+  <Card title="Read the Docs" icon="open-book">
+    Dive deeper in the [full documentation](/get-started/introduction-to-dataflow/) to master every feature Dataflow provides.
+  </Card>
 </CardGrid>
+
