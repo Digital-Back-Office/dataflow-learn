@@ -57,6 +57,7 @@ Follow these steps to create a new environment:
 Environments will have one of these statuses:
 
 - **Saved:** Initial state after creation  
+- **In Progress**: When the build process is undergoing
 - **Draft:** Built successfully and ready for use or publishing  
 - **Failed:** Build failed due to some reason
 - **Published:** Approved by Admin and available to all users
@@ -94,7 +95,8 @@ Studio provides versioning for environments to track changes and maintain build 
 
 ###  **Build & Approval Process**
 
-1. After clicking **Build**, your environment is queued for build on backend servers  
+1. After clicking **Build**, your environment is queued for build on backend servers 
+2. During building the environments's will be in "In Progress" state and during this time it will be unusable until the build completes. 
 2. If the build is successful, it moves to **Draft** state  
 3. From **Draft**, you can:
 
