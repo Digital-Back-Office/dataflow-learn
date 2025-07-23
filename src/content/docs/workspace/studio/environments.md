@@ -26,10 +26,19 @@ Follow these steps to create a new environment:
 
 1. **Click "New Environment":** Opens the environment creation form  
 2. **Enter Details:**  
-   - **Short Name:** A quick identifier (e.g. `ml-env`)  
+   - **Short Name:** A quick identifier and maximum length should be 5 (e.g. `mlenv`)  
    - **Full Name:** Descriptive name (e.g. `Machine Learning Environment`)  
-   - **Base Environment:** Choose a base image (e.g. `python:3.10`)  
-3. **Add Libraries:** List required libraries with specific versions (e.g. `pandas==1.5.3`, `scikit-learn==1.3.0`)
+   - **Base Environment:** Choose a base environment and if it is set as `None` then no base image is chosen and you need to mention python version
+   - **Python Version:** Only available if no base environment (`None`) is chosen
+3. **Add Libraries:** 
+   - **Conda Libraries:** Mention the conda libraries that needs to be installed.
+   - **Pip Libraries:** Mention the pip libraries that needs to be installed.
+
+> **Note:** The requirements for both `pip` and `conda` should follow one of the following formats:
+>     • `library`
+>     • `library=version`
+>     • `library==version`
+
 
 ![Environment Status Flow](../../../../assets/workspace/studio/env-creation.png)
 
@@ -38,17 +47,50 @@ Follow these steps to create a new environment:
 
 5. **Click "Build":** Initiates the build process to install the specified libraries and prepare your environment image
 
+>  **Note:** The **short name** is unique across an organization. If a short name is rejected then it is used by someone else so try a different one
 ---
 
-##  Environment Status Flow
+---
 
-Environments move through these statuses:
+##  Environment Status
+
+Environments will have one of these statuses:
 
 - **Saved:** Initial state after creation  
 - **Draft:** Built successfully and ready for use or publishing  
-- **Published:** Approved by Admin and available to all users  
+- **Failed:** Build failed due to some reason
+- **Published:** Approved by Admin and available to all users
 
 ---
+
+## Environment Versioning
+
+Studio provides versioning for environments to track changes and maintain build history:
+
+- When you first build an environment, **Version 1** is created
+- A version dropdown appears below the environment name showing all available versions
+- Each subsequent build creates a new version (1, 2, 3, etc.)
+- Selecting a version from the dropdown displays libraries and logs specific to that version
+
+![Environment Versioning](../../../../assets/workspace/studio/env-versioning.png)
+
+### Version Behavior and Rules
+
+- **Latest Version Only:** While you can view all versions for audit purposes, only the latest successful version is available for activation or publishing
+- **Library Management:** 
+  - New libraries in requirements will be installed in new versions
+  - Libraries removed from requirements may still remain in the environment
+  - Version changes to existing libraries are not guaranteed to take effect
+- **Revert Option:** You can revert to a previous version, which creates a new version identical to the one you're reverting to
+- **Failed Builds:** 
+  - If a build fails then the status will be shown as the same. Only the latest version can be in failed state.
+  - Failure logs are available for troubleshooting
+  - The environment remains on the last successful version for use
+  - When errors are fixed and built again, the same failed version will update with the new status and logs.
+- **Approval Process:** When requesting approval for an environment, all failed versions are permanently deleted, and only the last successful draft version is submitted for admin approval
+
+---
+
 
 ###  **Build & Approval Process**
 
@@ -73,7 +115,7 @@ You can **activate an environment** in your Studio server if it is in:
 - **Draft** state (private use)  
 - **Published** state (shared use)
 
->  **Note:** Activation is not possible for environments still in **Saved** state or if the build has failed.
+>  **Note:** Activation is not possible for environments still in **Saved** state or if it does not have atleast one successful build.
 
 ---
 
