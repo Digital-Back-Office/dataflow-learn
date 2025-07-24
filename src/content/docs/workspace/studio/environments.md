@@ -38,6 +38,9 @@ Follow these steps to create a new environment:
 >     • `library`
 >     • `library=version`
 >     • `library==version`
+>     • `library<=version`
+>     • `library>=version`
+>     Also library[dependencies] format with any of the above is allowed.
 
 
 ![Environment Status Flow](../../../../assets/workspace/studio/env-creation.png)
