@@ -100,6 +100,61 @@ In your Notebook interface, you will see two categories:
 
 ---
 
+## Pip Sources Management
+
+The **Pip Sources** feature in the Environment Settings allows you to manage custom Python package sources for your personal use. This is particularly useful when you need to install packages from private repositories or alternative package indexes.
+
+![Pip Sources Interface](../../../../assets/workspace/studio/pip-sources.png)
+
+### Organization vs User Level Sources
+
+**Organization Level Sources:**
+- Configured by administrators for the entire workspace
+- Automatically available to all users
+- Cannot be modified by individual users
+- Displayed with "(Organization)" label for identification
+
+**User Level Sources:**
+- Personal extra index URLs that you can add and manage
+- Only visible and usable in your environments
+- You have full control to add, edit, and delete these sources
+- Complement the organization-level sources
+
+### What You Can Do
+
+As a user, you can:
+
+1. **View Organization Sources:** See all pip sources configured by your administrator
+2. **Add Personal Extra Index URLs:** Add your own private or additional package sources
+3. **Edit Your Sources:** Modify the name and URL of sources you created
+4. **Delete Your Sources:** Remove sources you no longer need
+
+### Managing Your Pip Sources
+
+**To Add a New Source:**
+1. Click **"Add URL"** in the Extra Index URLs section
+2. Enter a **Name** for easy identification (letters, digits, hyphens, and underscores only)
+3. Enter the **URL** of your package index (e.g., `https://your-private-repo.com/simple`)
+4. Click **"Add"** to save
+
+**To Edit an Existing Source:**
+1. Click the **pencil icon** next to the source you want to edit
+2. Modify the name or URL as needed
+3. Click **"Update"** to save changes
+
+**To Delete a Source:**
+1. Click the **trash icon** next to the source you want to remove
+2. Confirm the deletion in the dialog that appears
+
+### Important Notes
+
+- Only sources you created can be edited or deleted
+- Organization sources are read-only and managed by administrators
+- Changes to pip sources are automatically applied to new environment builds
+- Your personal sources are private and not visible to other users
+
+---
+
 ##  Summary
 
 1. **Create a new environment** by defining name, base image, and libraries  
