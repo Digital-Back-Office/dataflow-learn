@@ -80,3 +80,72 @@ Through the **Python Environment Approval** process, Admins ensure:
 - Workspace compatibility, security, and cost-efficiency are maintained  
 - Users can build custom environments confidently while adhering to governance policies
 
+---
+
+## Managing Pip Sources
+
+As an Admin, you can configure organization-wide pip sources that will be available to all users when building their Python environments. This allows you to set up private package repositories, internal mirrors, or alternative package indexes for the entire workspace.
+
+![Admin Pip Sources Management](../../../../assets/workspace/admin/pip-sources.png)
+
+### What are Pip Sources?
+
+Pip sources define where Python packages are downloaded from during environment builds. You can configure:
+
+- **Index URL:** The primary package source (replaces PyPI as the default)
+- **Extra Index URLs:** Additional package sources that complement the main index
+
+### Organization-Level Management
+
+**Benefits of Centralized Control:**
+- Ensure all users access approved package repositories
+- Configure private or internal package indexes
+- Maintain security and compliance across all environments
+- Standardize package sources for consistent builds
+
+### Managing Index URL
+
+**Setting a Custom Index URL:**
+1. Navigate to **Admin → Environment Settings** from the sidebar
+2. In the **Index URL** section, click **"Add Index URL"** if none exists
+3. Enter a **Name** for identification (e.g., "Internal PyPI Mirror")
+4. Enter the **URL** of your package index (e.g., `https://internal-pypi.company.com/simple`)
+5. Click **"Add"** to save
+
+**Editing or Removing Index URL:**
+- Click the **pencil icon** to edit the existing index URL
+- Click the **trash icon** to remove and revert to PyPI default
+- Changes apply to all future environment builds
+
+### Managing Extra Index URLs
+
+**Adding Extra Sources:**
+1. In the **Extra Index URLs** section, click **"Add URL"**
+2. Enter a **Name** and **URL** for the additional source
+3. Click **"Add"** to save
+
+**Managing Existing Sources:**
+- **Edit:** Click the pencil icon to modify name or URL
+- **Delete:** Click the trash icon to remove the source
+
+### User vs Admin Sources
+
+**Admin (Organization) Sources:**
+- Configured by you and visible to all users
+- Cannot be modified by individual users
+- Automatically included in all environment builds
+- Marked as "(Organization)" in user interfaces
+
+**User Sources:**
+- Personal extra index URLs added by individual users
+- Only visible to the user who created them
+- Complement the organization sources you configure
+- Users can add, edit, and delete their own sources
+
+### Important Considerations
+
+**Impact on Users:**
+- Changes to pip sources affect all new environment builds
+- Existing environments are not automatically updated
+- Users will see organization sources in their environment settings
+
