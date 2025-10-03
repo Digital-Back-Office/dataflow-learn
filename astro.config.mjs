@@ -125,7 +125,10 @@ export default defineConfig({
                 },
                 {
                   label: "Runtime Settings",
-                  link: "/workspace/admin/runtime-settings/",
+                  items: [
+                    { label: "Introduction", link: "/workspace/admin/runtime-settings/introduction/" },
+                    { label: "Airflow Runtime Settings", link: "/workspace/admin/runtime-settings/runtime-airflow-config/" },
+                  ],
                 },
                 {
                   label: "Manage Spark",
