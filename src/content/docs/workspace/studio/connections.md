@@ -89,6 +89,8 @@ Connections created in Dataflow can be accessed in your Python code for executin
 
 ### Example: Using a Connection in Python
 
+Dataflow provides three different modes for accessing connections in Python:
+
 ```python
 from dataflow.dataflow import Dataflow
 from sqlalchemy import text
@@ -96,15 +98,19 @@ from sqlalchemy import text
 # Initialize Dataflow SDK
 dataflow = Dataflow()
 
-# Retrieve connection by ID
-db = dataflow.connection("conn_id")
+# Method 1: Get database URL
+db_url = dataflow.connection("conn_id", mode="url")
 
-# Execute SQL query
-result = db.execute(text("SELECT 1"))
+# Method 2: Get SQLAlchemy engine
+engine = dataflow.connection("conn_id", mode="engine")
+with engine.connect() as conn:
+    result = conn.execute(text("SELECT 1"))
+    row = result.fetchone()
 
-# Fetch first row
+# Method 3: Get SQLAlchemy session (default)
+session = dataflow.connection("conn_id")
+result = session.execute(text("SELECT 1"))
 row = result.fetchone()
-print(row)
 ```
 
 ---
