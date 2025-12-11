@@ -105,3 +105,40 @@ result = db.execute(text("SELECT 1"))
 # Fetch first row
 row = result.fetchone()
 print(row)
+```
+
+---
+
+## Using Connections in Jupyter Notebooks with JupySQL
+
+Dataflow supports **JupySQL** magic commands in Jupyter notebooks, allowing you to execute SQL queries directly using your configured connections with a simple and intuitive syntax.
+
+### Basic Usage
+
+```python
+# Connect to your database using the connection ID
+%sql conn_id
+
+# Execute SQL queries directly
+%sql SELECT * FROM users LIMIT 10;
+
+# Multi-line queries
+%%sql
+SELECT 
+    user_id,
+    username,
+    created_at
+FROM users
+WHERE status = 'active'
+ORDER BY created_at DESC;
+```
+
+### Important Notes
+
+> **Kernel Restart Required**: If you add a new connection in Dataflow Studio while a notebook kernel is already running, you need to **restart the kernel** to use the new connection with `%sql conn_id`.
+
+> **Alternative Without Restart**: To avoid restarting the kernel, you can use the `--section` parameter:
+> ```python
+> %sql --section conn_id
+> ```
+> This will work immediately without requiring a kernel restart.
