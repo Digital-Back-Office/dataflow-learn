@@ -89,6 +89,8 @@ Connections created in Dataflow can be accessed in your Python code for executin
 
 ### Example: Using a Connection in Python
 
+Dataflow provides three different modes for accessing connections in Python:
+
 ```python
 from dataflow.dataflow import Dataflow
 from sqlalchemy import text
@@ -96,12 +98,53 @@ from sqlalchemy import text
 # Initialize Dataflow SDK
 dataflow = Dataflow()
 
-# Retrieve connection by ID
-db = dataflow.connection("conn_id")
+# Method 1: Get database URL
+db_url = dataflow.connection("conn_id", mode="url")
 
-# Execute SQL query
-result = db.execute(text("SELECT 1"))
+# Method 2: Get SQLAlchemy engine
+engine = dataflow.connection("conn_id", mode="engine")
+with engine.connect() as conn:
+    result = conn.execute(text("SELECT 1"))
+    row = result.fetchone()
 
-# Fetch first row
+# Method 3: Get SQLAlchemy session (default)
+session = dataflow.connection("conn_id")
+result = session.execute(text("SELECT 1"))
 row = result.fetchone()
-print(row)
+```
+
+---
+
+## Using Connections in Jupyter Notebooks with JupySQL
+
+Dataflow supports **JupySQL** magic commands in Jupyter notebooks, allowing you to execute SQL queries directly using your configured connections with a simple and intuitive syntax.
+
+### Basic Usage
+
+```python
+# Connect to your database using the connection ID
+%sql conn_id
+
+# Execute SQL queries directly
+%sql SELECT * FROM users LIMIT 10;
+
+# Multi-line queries
+%%sql
+SELECT 
+    user_id,
+    username,
+    created_at
+FROM users
+WHERE status = 'active'
+ORDER BY created_at DESC;
+```
+
+### Important Notes
+
+> **Kernel Restart Required**: If you add a new connection in Dataflow Studio while a notebook kernel is already running, you need to **restart the kernel** to use the new connection with `%sql conn_id`.
+
+> **Alternative Without Restart**: To avoid restarting the kernel, you can use the `--section` parameter:
+> ```python
+> %sql --section conn_id
+> ```
+> This will work immediately without requiring a kernel restart.
