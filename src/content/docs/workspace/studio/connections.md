@@ -195,6 +195,70 @@ def list_buckets():
 list_buckets()
 ```
 
+### Example: Snowflake Connection
+
+**Install Package:**
+```bash
+pip install apache-airflow-providers-snowflake
+```
+
+```python
+from airflow.providers.snowflake.hooks.snowflake import SnowflakeHook
+
+hook = SnowflakeHook(snowflake_conn_id="my_snowflake_conn")
+
+conn = hook.get_conn()
+cur = conn.cursor()
+
+cur.execute("SELECT CURRENT_WAREHOUSE()")
+print(cur.fetchone())
+```
+
+### Example: MongoDB Connection
+
+**Install Package:**
+```bash
+pip install apache-airflow-providers-mongo
+```
+
+```python
+from airflow.providers.mongo.hooks.mongo import MongoHook
+
+hook = MongoHook(conn_id="my_mongo_conn")
+client = hook.get_conn()
+
+db = client["my_database"]
+collection = db["my_collection"]
+
+docs = list(collection.find())
+print(docs)
+```
+
+### Example: Google BigQuery Connection
+
+**Install Package:**
+```bash
+pip install apache-airflow-providers-google
+```
+
+```python
+from airflow.providers.google.cloud.hooks.bigquery import BigQueryHook
+
+hook = BigQueryHook(gcp_conn_id="my_bigquery_conn")
+
+# Run a query
+query = """
+    SELECT name, count
+    FROM `project.dataset.table`
+    LIMIT 10
+"""
+
+records = hook.get_records(sql=query)
+for record in records:
+    print(record)
+```
+
+---
 
 ## Using Connections in Jupyter Notebooks with JupySQL
 
