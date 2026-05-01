@@ -14,6 +14,13 @@ Variables and secrets serve as the foundation for secure configuration managemen
 
 Variables are key-value pairs stored in the Dataflow database, designed for non-sensitive configuration values that can be reused across projects and workflows.
 
+### Supported Types
+
+Variables support the following value types:
+
+- **String** — Plain text configuration values
+- **JSON** — Structured configuration data in JSON format
+
 ### Common Use Cases
 
 Variables are ideal for storing:
@@ -31,12 +38,18 @@ Follow these steps to create a new variable:
 2. Click **Add Variable**
 3. Configure the following fields:
    - **Key:** Unique identifier for the variable
-   - **Value:** String, integer, boolean, or JSON data
+   - **Value:** String or JSON data
+   - **Type:** Select the appropriate type — `String` or `JSON`
    - **Description:** Optional documentation for clarity
+   - **Set as Environment Variable:** Enable this checkbox to expose the variable as an environment variable
 4. Click **Save** to store the variable
 
 :::tip[Naming Convention]
 Use descriptive, consistent naming conventions such as `API_BASE_URL` or `processing_batch_size` for better maintainability.
+:::
+
+:::note[Environment Variable]
+If **Set as Environment Variable** is enabled, the server must be restarted for the environment variable to take effect.
 :::
 
 ### Updating Variables
@@ -45,7 +58,7 @@ To modify an existing variable:
 
 1. Access the Variables page
 2. Locate the target variable and click **Edit**
-3. Modify the value or description as required
+3. Modify the value, type, or description as required
 4. Click **Save** to apply changes
 
 ### Deleting Variables
@@ -84,6 +97,18 @@ Replace `"variable_name"` with the exact key defined in your Variables configura
 
 Secrets are key-value pairs stored securely in the Dataflow Secret Manager, specifically designed for sensitive information such as passwords, API tokens, and credentials.
 
+### Supported Types
+
+Secrets support the following value types:
+
+- **String** — Plain text sensitive values such as passwords and tokens
+- **JSON** — Structured sensitive data in JSON format
+- **File** — File-based secrets such as certificates, private keys, or credential files
+
+### Size Limits
+
+- The maximum size for a secret value is **60 KB**
+
 ### Common Use Cases
 
 Secrets should be used for:
@@ -111,9 +136,15 @@ To create a new secret:
 2. Click **Add Secret**
 3. Enter the required information:
    - **Key:** Unique identifier for the secret
-   - **Value:** Sensitive data (password, token, etc.)
+   - **Value:** Sensitive data based on the selected type (password, token, JSON, or file)
+   - **Type:** Select the appropriate type — `String`, `JSON`, or `File`
    - **Description:** Optional documentation
+   - **Set as Environment Variable:** Enable this checkbox to expose `String` type secrets as environment variables
 4. Click **Save** to securely store the secret
+
+:::note[Environment Variable]
+The **Set as Environment Variable** option is available only for **String** type secrets. If enabled, the server must be restarted for the environment variable to take effect.
+:::
 
 ### Updating Secrets
 
@@ -121,7 +152,7 @@ To modify an existing secret:
 
 1. Go to the Secrets page
 2. Click **Edit** next to the target secret
-3. Update the value or description
+3. Update the value, type, or description
 4. Click **Save** to apply changes
 
 ### Deleting Secrets
@@ -160,11 +191,18 @@ Never log or print secret values directly. Always handle secrets with appropriat
 
 | Feature | Variables | Secrets |
 |---------|-----------|---------|
-| **Storage Location** |  Database |  Secret Manager |
+| **Storage Location** | Database | Secret Manager |
 | **Primary Purpose** | Non-sensitive configurations | Sensitive data and credentials |
 | **Security Level** | Standard | Enhanced encryption |
+| **Supported Types** | String, JSON | String, JSON, File |
+| **Max Value Size** | — | 60 KB |
 | **Access Method** | `dataflow.variable("key")` | `dataflow.secret("key")` |
-| **Use Cases** | URLs, parameters, settings | Passwords, tokens, keys |
+| **Set as Environment Variable** | Yes (String, JSON) | Yes (String only) |
+| **Use Cases** | URLs, parameters, settings | Passwords, tokens, keys, certificates |
+
+:::note[Environment Variable Restart]
+For any variable or secret configured with **Set as Environment Variable**, a server restart is required for the change to take effect.
+:::
 
 ## Best Practices
 
@@ -215,12 +253,14 @@ class ConfigManager:
         }
 ```
 
-
 ## Summary
 
 This documentation covered:
 
 - **Fundamental differences** between Variables and Secrets
+- **Supported types** — String and JSON for Variables; String, JSON, and File for Secrets
+- **Size limits** — up to 60 KB for secret values
+- **Environment variable support** — configurable via the Set as Environment Variable checkbox, requiring a server restart to take effect
 - **Complete lifecycle management** including creation, updates, and deletion
 - **Secure access patterns** using the Dataflow SDK
 - **Best practices** for security and operational excellence
