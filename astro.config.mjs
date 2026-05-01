@@ -57,6 +57,10 @@ export default defineConfig({
                   link: "/workspace/studio/launch-studio-server/",
                 },
                 {
+                  label: "Server Sharing",
+                  link: "/workspace/studio/server-sharing/",
+                },
+                {
                   label: "Explore & Engineer Data",
                   link: "/workspace/studio/explore-and-engineer-data/",
                 },
@@ -91,6 +95,10 @@ export default defineConfig({
                 {
                   label: "Spark",
                   link: "/workspace/studio/spark/",
+                },
+                {
+                  label: "Containers",
+                  link: "/workspace/studio/containers/",
                 },
               ],
             },
