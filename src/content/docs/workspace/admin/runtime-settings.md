@@ -102,6 +102,18 @@ These settings ensure your applications are fully integrated and securely config
 
 ---
 
+## Shared Airflow Tenancy
+
+Shared Airflow runs multiple projects in a single Airflow instance with strict rules for safety and visibility.
+
+- Visibility is always public
+- Airflow config edits are not supported
+- Non-stdlib imports and secrets/variables/connections must be used inside task functions
+
+Read the full guide: [Shared Airflow Tenancy](/workspace/admin/runtime-settings/shared-airflow-tenancy/)
+
+---
+
 ## SSH Key Management
 
 - **Copy SSH Key:** Retrieve the SSH key anytime from the project details page.  
