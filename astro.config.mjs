@@ -136,6 +136,7 @@ export default defineConfig({
                   items: [
                     { label: "Introduction", link: "/workspace/admin/runtime-settings/introduction/" },
                     { label: "Airflow Runtime Settings", link: "/workspace/admin/runtime-settings/runtime-airflow-config/" },
+                    { label: "Shared Airflow Tenancy", link: "/workspace/admin/runtime-settings/shared-airflow-tenancy/" },
                   ],
                 },
                 {
