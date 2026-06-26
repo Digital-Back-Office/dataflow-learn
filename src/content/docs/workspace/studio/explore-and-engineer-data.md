@@ -56,7 +56,7 @@ Studio includes an integrated **VS Code IDE** that connects to the same shared v
 
 ---
 
-## 🔗 Git Integration via SSH
+## Git Integration via SSH
 
 Studio supports **secure Git integration via SSH keys**, enabling you to:
 
@@ -68,7 +68,7 @@ Studio supports **secure Git integration via SSH keys**, enabling you to:
 
 ---
 
-## ✅ **Best Practices**
+## **Best Practices**
 
 1. Organise your files within structured folders for easy navigation across apps  
 2. Check the **activated kernel** in Notebooks matches your selected Python environment  
