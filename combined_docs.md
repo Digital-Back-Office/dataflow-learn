@@ -2897,7 +2897,7 @@ Studio supports **secure Git integration via SSH keys**, enabling you to:
 
 ---
 
-## ✅ **Best Practices**
+## **Best Practices**
 
 1. Organise your files within structured folders for easy navigation across apps  
 2. Check the **activated kernel** in Notebooks matches your selected Python environment  
@@ -3341,7 +3341,7 @@ All outputs written to the shared volume remain accessible for downstream workfl
 
 ---
 
-## 💻 Example: Reading and Exploring Data
+## Example: Reading and Exploring Data
 
 Below is a **simple and practical example** of using PySpark in Studio to read a dataset and perform basic analysis.
 

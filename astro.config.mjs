@@ -6,6 +6,14 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://docs.dataflow.zone/',
+  redirects: {
+    '/': '/get-started/introduction-to-dataflow/',
+  },
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/noop'
+    }
+  },
   integrations: [
     starlight({
       title: "Dataflow",

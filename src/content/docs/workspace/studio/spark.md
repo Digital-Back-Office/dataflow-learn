@@ -39,7 +39,7 @@ All outputs written to the shared volume remain accessible for downstream workfl
 
 ---
 
-## 💻 Example: Reading and Exploring Data
+## Example: Reading and Exploring Data
 
 Below is a **simple and practical example** of using PySpark in Studio to read a dataset and perform basic analysis.
 
