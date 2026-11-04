@@ -100,6 +100,10 @@ export default defineConfig({
                   label: "Containers",
                   link: "/workspace/studio/containers/",
                 },
+                {
+                  label: "AI Apps (MCP)",
+                  link: "/workspace/studio/ai-apps-mcp/",
+                },
               ],
             },
 
