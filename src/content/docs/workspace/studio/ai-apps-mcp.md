@@ -13,7 +13,7 @@ The connection uses the **Model Context Protocol (MCP)**, an open standard that 
 
 After you connect an app, it can do the following as you, with your permissions:
 
-- Read and edit files and notebooks in your workspace
+- Read, edit and delete files and notebooks in your workspace
 - Use your connections, variables and secrets
 - Create and manage Preview deployments and diagrams
 - Start and stop your Studio server
@@ -123,7 +123,7 @@ Ask for what you need in plain language. For example:
 ### Approving Actions
 
 - **Your AI app asks before it uses a tool.** Most apps show each action and let you approve or reject it.
-- **Dataflow asks again before risky actions,** such as deleting, deploying, stopping a deployment, or starting or stopping your server. The app shows you the question and any choices, such as the server size or environment, and goes ahead only after you agree.
+- **Dataflow asks again before risky actions,** such as deleting a file, deploying, stopping a deployment, or starting or stopping your server. Files are deleted one at a time, never whole folders, and a deleted file can't be restored from Studio. The app shows you the question and any choices, such as the server size or environment, and goes ahead only after you agree.
 - **After an edit, the app can show you what changed** in your files, notebooks and diagrams.
 
 ### Long-Running Tasks
